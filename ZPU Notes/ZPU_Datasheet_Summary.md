@@ -1,23 +1,16 @@
 
 ###
 # ZPU Datasheet Summary
-Last Edited : 09/09/2026 by Patchy Suanthong
-
+Last Edited : 09/13/2026 by Patchy Suanthong
 
 Including:
 - Summary of important sections (09/09/26)
-
-
+- Typo fixes (09/13/26)
 
 Original document can be found here: https://github.com/zylin/zpu/blob/master/zpu/docs/zpu_arch.html
 
 ## ZPU Architecture
 ### Stack-Based
-
-
-
-
-
 
  Unlike ARM, RISC-V, or Xx86, ZPU use stack-based architectures instead of register based architecture. The ZPU has one main stack to operate on.
 
@@ -30,15 +23,13 @@ push(A + B)
 ~~~ 
 Each operation is 32 bits wide (take 32-bit operands) , while the instruction (e.g., ADD) itself is 8 bits wide. This allow for very compact codes.
 
-T
- he atacanconta values, function arguments, temporary results, return addresses, etc.
+The stack contains values, function arguments, temporary results, return addresses, etc.
 Literal onstatnts can also be coded into operations using Immediate values (IM) and IDIM flags e.g., 
 
 ~~~ 
 IM 5
 ~~~
  
-
 to push 5 to the stack. IM operations can be chained to put larger values.
 
 ## Facilitate GCC
@@ -65,14 +56,8 @@ Each ZPU instruction is 8 bits wide handling different function to handle the st
 | **Special**      | `BREAKPOINT`, `NOP`, `EMULATE`, `PUSHPC`                                  |
 
 
-
-
-
-
-
-
 Note that although most of these instructions are handled on the hardware-side, some of these are emulated in either RTL or Software microcode. (EMULATE Instruction).
-ore Hardaware Instructions = Heavy CPU = Faster Execution
+More Hardaware Instructions = Heavy CPU = Faster Execution
 Less Hardware Instructions = Lightweight CPU = More Instructions in Microcode = Slower
 ## Program Counter and Jump Vectors
 
@@ -85,14 +70,14 @@ Less Hardware Instructions = Lightweight CPU = More Instructions in Microcode = 
 
 Like most architecture, the Program Counter (PC) stores the address of the next instruction to execute. The PC will be set to these addresses after corresponding events occur.
 
-For examplee, when you hit the reset button, the PC will be set to 0x000. The code at 0x000 is essentially the first line of code that will be run when a program start/reset.
+For example, when you hit the reset button, the PC will be set to 0x000. The code at 0x000 is essentially the first line of code that will be run when a program start/reset.
 
 The emulated instruction handlers vector region store the addresses of function handling instruction that are unavailable on hardware. The vector point to a software will handle the instruction like an interrupt would.
 
 ## Interrupts
 
 
-nterrupt is when therunnrng code i is halted to process an interrupting fucition, usually called the "Interrupt Service Routine (ISR
+Interrupt is when therunnrng code i is halted to process an interrupting fucition, usually called the "Interrupt Service Routine (ISR
 When an interrupt happens, the current state of the CPU is pushed onto a memory stack, which the CPU will return to after it complete the ISR.
 Onterrupts are essential to Microcontrollers because they allow something similar to multicore processsing.
 ### Interrupts in ZPU
@@ -101,8 +86,6 @@ For ZPU, its Interrupt Controller is not built into the ZPU
 
  - External Software Log must handle ISR selection by determining the source itself. This code is enterred though 0x20.  -
 - he controller mask which interrupts to enable
-
-
 
 
 ## ZPU4 Small

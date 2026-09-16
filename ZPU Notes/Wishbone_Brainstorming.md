@@ -1,9 +1,9 @@
 
 # Wishbone Notes
-Last Edited : 09/09/2026 by Patchy Suanthong
+Last Edited : 09/10/2026 by Patchy Suanthong
 
 Logs:
-- Studied the concepts of implementing a wishbone bus in our ZPU SoC (09/09/26)
+- Studied the concepts of implementing a wishbone bus in our ZPU SoC (09/10/26)
 
 
 Sources: 
