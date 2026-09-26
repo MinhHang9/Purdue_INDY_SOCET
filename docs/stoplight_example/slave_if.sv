@@ -24,4 +24,5 @@ interface slave_if #(
         input SCLK, SRESET, SDAT_I, ACK_I, ERR_I, RTY_I, ADR_I, CYC_I, STB_I, WE_I, SEL_I, LOCK_I, TGA_I, TGC_I,
         output SDAT_O, CYC_O, STB_O, WE_O, SEL_O, LOCK_O, ACK_O, ERR_O, RTY_O, TGA_I, TGC_I
     );
+    
 endinterface
